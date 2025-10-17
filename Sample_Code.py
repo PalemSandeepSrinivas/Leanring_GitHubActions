@@ -1,7 +1,6 @@
 import requests
 import os
-import dotenv
-dotenv.load_dotenv() 
+
 
 def test_euron():
     url = "https://api.euron.one/api/v1/euri/chat/completions"
