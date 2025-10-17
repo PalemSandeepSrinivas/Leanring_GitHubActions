@@ -1,0 +1,34 @@
+name: Run Euron API Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-euron:
+    runs-on: ubuntu-latest
+    env:
+      EURON_API_KEY: ${{ secrets.EURON_API_KEY }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Check if secret is injected
+        run: |
+          if [ -z "$EURON_API_KEY" ]; then
+            echo "❌ Secret EURON_API_KEY is NOT set"
+            exit 1
+          else
+            echo "✅ Secret EURON_API_KEY is set"
+          fi
+
+      - name: Run Euron API script
+        run: python Sample_Code.py
