@@ -9,6 +9,7 @@ def test_euron():
         "Content-Type": "application/json",
         "Authorization": f"Bearer {os.getenv('EURON_API_KEY')}"
     }
+    print("Authorization header:", headers["Authorization"])
     payload = {
         "messages": [
             {"role": "system", "content": "You are a helpful assistant."},
