@@ -4,9 +4,10 @@ import os
 
 def test_euron():
     url = "https://api.euron.one/api/v1/euri/chat/completions"
+    # print(os.get('Euron_Api_Key')})
     headers = {
         "Content-Type": "application/json",
-        "Authorization": f"Bearer {os.getenv('Euron_Api_Key')}"
+        "Authorization": f"Bearer {os.getenv('EURON_API_KEY')}"
     }
     payload = {
         "messages": [
