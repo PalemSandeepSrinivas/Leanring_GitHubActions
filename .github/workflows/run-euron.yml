@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       EURON_API_KEY: ${{ secrets.EURON_API_KEY }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -20,5 +21,15 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Run script
+      - name: 🔍 Debug: Check if secret is injected
+        run: |
+          if [ -z "$EURON_API_KEY" ]; then
+            echo "❌ Secret EURON_API_KEY is NOT set"
+            exit 1
+          else
+            echo "✅ Secret EURON_API_KEY is set"
+          fi
+
+      - name: Run Euron API script
         run: python Sample_Code.py
+
