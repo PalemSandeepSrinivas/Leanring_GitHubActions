@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: 🔍 Debug: Check if secret is injected
+      - name: Check if secret is injected
         run: |
           if [ -z "$EURON_API_KEY" ]; then
             echo "❌ Secret EURON_API_KEY is NOT set"
